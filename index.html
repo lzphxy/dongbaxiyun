@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    ad>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="东巴囍韵 - 传承千年东巴纸工艺，打造永恒婚书文化">
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="logo.jpg" as="image" imagesrcset="logo.webp 480w, logo.jpg 800w">
+    <link rel="preload" href="HYShangWeiShouW.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="视频封面1.jpg" as="image" imagesrcset="视频封面1.webp 480w, 视频封面1.jpg 800w">
+    
+    <title>东巴囍韵 | 千年东巴纸，一纸定良缘</title>
+    <style>
+        :root {
+            --primary-color: #c0392b;
+            --secondary-color: #d4af37;
+            --dark-color: #2c3e50;
+            --light-bg: #f9f5f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: '思源宋体', 'Noto Serif SC', serif;
+        }
+
+        body {
+            background: var(--light-bg);
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        /* 导航栏 */
+        .nav {
+            padding: 1rem;
+            background: rgba(255,255,255,0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 50px;
+            transition: transform 0.3s;
+            margin-left: 1rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            margin-right: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-size: 1.1rem;
+            position: relative;
+            padding: 5px 0;
+            white-space: nowrap;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .title-text {
+            font-family: '汉仪尙巍手书W', '方正清刻本悦宋', 'Noto Serif SC', serif;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+        }
+
+        .title-text span:first-child {
+            color: var(--primary-color);
+        }
+        .product-card:hover .product-image {
+    transform: scale(1.05);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.product-image {
+    transition: transform 0.3s ease;
+}
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .product-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    
+    .product-info p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    .product-badge {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+    }
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255,255,255,0.98);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .title-text {
+                font-size: 1.8rem;
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                border-bottom: 1px solid #eee;
+            }
+        }
+
+        /* 页眉 */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('logo.jpg') center/cover;
+            height: 60vh;
+            margin-top: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-title {
+            color: white;
+            font-size: 2.5rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.3;
+        }
+
+        /* 东巴来源视频 */
+        .origin-section {
+            padding: 2rem 1rem; /* 减少纵向间距 */
+    max-width: 100%; /* 改为满屏宽度 */
+    margin: 0 auto;
+        }
+
+        .origin-title {
+            font-size: 1.5rem; /* 减小字体大小 */
+    color: var(--primary-color);
+    margin-bottom: 1.5rem; /* 减少底部间距 */
+    text-align: center;
+    position: relative;
+        }
+        /* 视频容器适配 */
+.video-container {
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 8px; /* 可选圆角 */
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9; /* 保持视频比例 */
+}
+
+/* 移动端适配（小于768px） */
+@media (max-width: 768px) {
+    .origin-section {
+        padding: 1.5rem 0.5rem; /* 进一步减少间距 */
+    }
+    
+    .origin-title {
+        font-size: 1.2rem; /* 更小的字体 */
+        margin-bottom: 1rem;
+    }
+    
+    /* 可选：调整视频控件大小 */
+    video::-webkit-media-controls {
+        transform: scale(0.9);
+    }
+}
+
+/* 超小屏幕适配（小于480px） */
+@media (max-width: 480px) {
+    .origin-title {
+        font-size: 1rem;
+        padding: 0 10px; /* 防止文字换行问题 */
+    }
+    
+    .video-container {
+        border-radius: 4px; /* 更小的圆角 */
+    }
+}
+
+        .origin-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        /* 轮播图 */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding: 0 1rem;
+            text-align: center;
+        }
+        .carousel-image {
+    width: 100%;
+    height: 60vh; /* 改用视口高度单位 */
+    min-height: 300px; /* 设置最小高度 */
+    max-height: 600px; /* 设置最大高度 */
+    object-fit: contain; /* 确保完整显示图片 */
+    object-position: center center; /* 居中显示关键内容 */
+    background: #f5f3f0; /* 添加背景色避免透明区域留白 */
+    padding: 1rem; /* 添加内边距 */
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .carousel-image {
+        height: 50vh; /* 减小高度比例 */
+        object-fit: cover; /* 改为充满容器 */
+        object-position: top center; /* 顶部对齐保留重要内容 */
+        padding: 0; /* 移除内边距 */
+    }
+    
+    /* 添加触摸滑动提示 */
+    .carousel-container::after {
+        content: '← 滑动查看 →';
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        font-size: 0.9rem;
+        animation: swipeHint 2s infinite;
+    }
+    
+    @keyframes swipeHint {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+    }
+}
+
+/* 大屏优化 */
+@media (min-width: 1200px) {
+    .carousel-image {
+        object-fit: contain; /* 大屏完整显示 */
+    }
+}
+
+        .carousel-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.8);
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .prev { left: 1rem; }
+        .next { right: 1rem; }
+
+        /* 文化介绍卡片 */
+        .culture-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .culture-card::after {
+            content: '囍';
+            position: absolute;
+            right: -30px;
+            top: -30px;
+            font-size: 8rem;
+            color: rgba(192, 57, 43, 0.1);
+        }
+
+        /* 产品展示 */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            background: linear-gradient(to bottom right, #fffaf0, #fff5e6);
+        }
+
+        .product-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 灯箱样式 */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 3px solid white;
+            border-radius: 10px;
+            animation: zoomIn 0.3s;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* 联系方式 */
+        .contact-section {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: var(--dark-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero { height: 50vh; }
+            .hero-title { font-size: 2rem; }
+            .product-grid { grid-template-columns: 1fr; }
+            .carousel-image { height: 300px; }
+        }
+
+        @font-face {
+            font-family: '汉仪尙巍手书W';
+            src: url('HYShangWeiShouW.woff2') format('woff2');
+            font-display: swap;
+        }
+        @font-face {
+            font-family: '方正清刻本悦宋';
+            src: url('FZQKBYSJW.woff2') format('woff2');
+            font-display: swap;
+        }
+        .culture-description {
+    margin-top: 1.5rem;
+    padding: 0 2rem;
+    text-align: center;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+}
+
+.carousel-item .product-card {
+    position: relative;
+    margin: 0 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.carousel-item .product-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(3px);
+}
+
+.carousel-item .product-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .carousel-item .product-info {
+        padding: 1rem;
+    }
+    
+    .carousel-item h3 {
+        font-size: 1.1rem;
+    }
+    
+    .carousel-item p {
+        font-size: 0.9rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- 导航 -->
+    <nav class="nav">
+        <img src="logo.jpg" alt="东巴囍韵" class="nav-logo">
+        <div class="nav-title">
+            <span class="title-text">
+                <span>东巴囍韵</span>
+                <span style="color: var(--dark-color)">官网</span>
+            </span>
+        </div>
+        <button class="menu-toggle">☰</button>
+        <div class="nav-links">
+            <a href="#origin">东巴来源</a>
+            <a href="#brand">品牌溯源</a>
+            <a href="#wedding">千年婚书</a>
+            <a href="#origin2">溯源婚书</a>
+            <a href="#culture">东巴文创</a>
+            <a href="#heritage">非遗传承</a>
+        </div>
+    </nav>
+
+    <!-- 页眉 -->
+    <header class="hero">
+        <h1 class="hero-title">千年东巴纸<br>一纸定良缘</h1>
+    </header>
+
+    <!-- 东巴来源视频 -->
+    <section class="origin-section" id="origin">
+        <h2 class="origin-title">东巴来源</h2>
+        <div class="video-container">
+            <video controls poster="视频封面1.jpg" class="lazy" width="100%" loading="lazy">
+                <source data-src="sp1.mp4" type="video/mp4">
+                <source data-src="sp1-mobile.mp4" media="(max-width: 768px)" type="video/mp4">
+            </video>
+        </div>
+    </section>
+    
+
+    <!-- 品牌溯源 -->
+    <section class="section" id="brand">
+        <div class="culture-card">
+            <h2 class="section-title">品牌溯源</h2>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- 创始人介绍 -->
+                    <div class="carousel-item">
+                        <div class="product-card">
+                            <span class="product-tag">文化传承</span>
+                            <img data-src="创始人.png" alt="品牌创始人" class="carousel-image lazy">
+                            <div class="product-info">
+                                <h3>匠人精神传承</h3>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- 制作工艺 -->
+                    <div class="carousel-item">
+                        <div class="product-card">
+                            <span class="product-tag">古法工艺</span>
+                            <img data-src="宣传照1.jpg" alt="造纸工艺" class="carousel-image lazy">
+                            <div class="product-info">
+                                <h3>30道传统工序</h3>
+                                <p>选料→蒸煮→捶打→抄纸→晾晒→压花→装裱</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- 原料处理 -->
+                    <div class="carousel-item">
+                        <div class="product-card">
+                            <span class="product-tag">原料处理</span>
+                            <img data-src="制作1.jpg" alt="原料蒸煮" class="carousel-image lazy">
+                            <div class="product-info">
+                                <h3>天然原料加工</h3>
+                                <p>海拔3000米荛树皮｜苍山泉水浸泡｜手工捶打3000次</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="carousel-button prev">❮</button>
+                <button class="carousel-button next">❯</button>
+            </div>
+            <p class="culture-description">
+                东巴囍韵诞生于中国最佳爱情表白地的大理，传承纳西族千年东巴纸工艺，
+                融合传统婚俗文化与现代美学，每张婚书皆由匠人手工制作，承载永恒誓言。
+            </p>
+        </div>
+    </section>
+
+    <!-- 婚书系列 -->
+<section class="section" id="wedding">
+    <div class="culture-card">
+        <h2 class="section-title">婚书系列</h2>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- 卷轴婚书 -->
+                <div class="carousel-item">
+                    <div class="product-card">
+                        <span class="product-tag">卷轴系列</span>
+                        <img data-src="图片1.jpg" alt="祥云卷轴婚书" class="carousel-image lazy">
+                        <div class="product-info">
+                            <h3>祥云卷轴婚书</h3>
+                            <p>47x31cm｜古法装裱｜金粉题字</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="product-card">
+                        <span class="product-tag">卷轴系列</span>
+                        <img data-src="图片2.jpg" alt="龙凤呈祥卷轴" class="carousel-image lazy">
+                        <div class="product-info">
+                            <h3>龙凤呈祥卷轴</h3>
+                            <p>24x33cm｜双面精绣｜红木轴头</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 相框婚书 -->
+                <div class="carousel-item">
+                    <div class="product-card">
+                        <span class="product-tag">相框系列</span>
+                        <img data-src="图片3.jpg" alt="圆月相框婚书" class="carousel-image lazy">
+                        <div class="product-info">
+                            <h3>圆月相框婚书</h3>
+                            <p>33x33cm｜红木精制｜可立式展示</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="product-card">
+                        <span class="product-tag">相框系列</span>
+                        <img data-src="图片4.jpg" alt="方寸相框婚书" class="carousel-image lazy">
+                        <div class="product-info">
+                            <h3>方寸相框婚书</h3>
+                            <p>12x17cm｜便携设计｜磁吸背板</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 定制婚书 -->
+                <div class="carousel-item">
+                    <div class="product-card">
+                        <span class="product-tag">定制系列</span>
+                        <img data-src="图片5.jpg" alt="个性定制婚书" class="carousel-image lazy">
+                        <div class="product-info">
+                            <h3>专属定制婚书</h3>
+                            <p>311x407mm｜指纹印章｜家徽定制</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-button prev">❮</button>
+            <button class="carousel-button next">❯</button>
+        </div>
+        <p class="culture-description">精选纳西族传统工艺，每份婚书皆由东巴纸匠人手工制作，传承千年婚书文化...</p>
+    </div>
+</section>
+
+<section class="origin-section" id="origin2">
+    <h2 class="origin-title">溯源婚书</h2>
+    <div class="video-container">
+        <video controls poster="视频封面.jpg" class="lazy" width="100%" loading="lazy">
+            <source data-src="sp2.mp4" type="video/mp4">
+            <source data-src="sp2-mobile.mp4" media="(max-width: 768px)" type="video/mp4">
+        </video>
+    </div>
+</section>
+<!-- 文创产品 -->
+<section class="section" id="culture">
+    <div class="culture-card">
+        <h2 class="section-title">🎁 文创臻品</h2>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- 压花书本灯 -->
+                <div class="carousel-item">
+                    <div class="product-card">
+                        <span class="product-tag" style="background:var(--secondary-color)">创意灯具</span>
+                        <img data-src="图片6.jpg" alt="压花书本灯" class="carousel-image lazy">
+                        <div class="product-info">
+                            <h3>东巴纸书本灯</h3>
+                            <p>可折叠设计｜USB充电｜展开尺寸：210×150mm</p>
+                            <div class="product-badge">荣获2023文博设计金奖</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 四季月历 -->
+                <div class="carousel-item">
+                    <div class="product-card">
+                        <span class="product-tag" style="background:#8e44ad">时间美学</span>
+                        <img data-src="图片7.jpg" alt="东巴纸月历" class="carousel-image lazy">
+                        <div class="product-info">
+                            <h3>四季轮回月历</h3>
+                            <p>三历合一设计｜支持定制｜300×400mm</p>
+                            <div class="product-badge">可激光雕刻纪念日</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 书法台灯 -->
+                <div class="carousel-item">
+                    <div class="product-card">
+                        <span class="product-tag" style="background:#27ae60">文房雅器</span>
+                        <img data-src="图片8.jpg" alt="书法台灯" class="carousel-image lazy">
+                        <div class="product-info">
+                            <h3>墨韵书法台灯</h3>
+                            <p>双面书法透光｜三档调光｜Φ200mm</p>
+                            <div class="product-badge">支持书法内容定制</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 书签 -->
+                <div class="carousel-item">
+                    <div class="product-card">
+                        <span class="product-tag" style="background:#e67e22">随身雅物</span>
+                        <img data-src="图片9.jpg" alt="东巴纸书签" class="carousel-image lazy">
+                        <div class="product-info">
+                            <h3>纳西祝福书签</h3>
+                            <p>东巴文祝福语｜6款套装｜45×150mm</p>
+                            <div class="product-badge">买赠手工收纳锦袋</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 花绘摆件 -->
+                <div class="carousel-item">
+                    <div class="product-card">
+                        <span class="product-tag" style="background:#e74c3c">空间美学</span>
+                        <img data-src="图片10.jpg" alt="花绘摆件" class="carousel-image lazy">
+                        <div class="product-info">
+                            <h3>花时绘影摆件</h3>
+                            <p>立体剪纸工艺｜Φ200×300mm｜支持定制</p>
+                            <div class="product-badge">赠送专属展示灯箱</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-button prev">❮</button>
+            <button class="carousel-button next">❯</button>
+        </div>
+        <p class="culture-description">
+            传承东巴纸工艺，创新设计现代生活美学，每件作品均采用千年古法手工制作...
+        </p>
+    </div>
+</section>
+    <!-- 非遗传承 -->
+    <section class="section" id="heritage">
+        <div class="culture-card">
+            <h2 class="section-title">🌿 文化守护</h2>
+            <p>每一张东巴纸历经30道古法工序...</p>
+            <div class="product-grid">
+                <img data-src="制作1.jpg" class="product-image lazy" alt="蒸煮工序">
+                <img data-src="制作2.jpg" class="product-image lazy" alt="晾晒工序">
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="contact-section">
+        <h2>让誓言永驻纸间</h2>
+        <p>联系邮箱：554089061@qq.com</p>
+    </section>
+
+    <!-- 灯箱 -->
+    <div id="lightbox" class="lightbox">
+        <img src="" alt="" class="lightbox-img">
+    </div>
+
+    <script>
+        // 移动端菜单切换
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    
+        // 轮播类
+        class Carousel {
+            constructor(containerID) {
+                this.container = document.getElementById(containerID);
+                this.track = this.container.querySelector('.carousel-track');
+                this.items = this.container.querySelectorAll('.carousel-item');
+                this.prevBtn = this.container.querySelector('.prev');
+                this.nextBtn = this.container.querySelector('.next');
+                this.currentIndex = 0;
+                this.autoPlayInterval = null;
+    
+                this.init();
+            }
+    
+            init() {
+                this.prevBtn.addEventListener('click', () => this.prev());
+                this.nextBtn.addEventListener('click', () => this.next());
+                this.startAutoPlay();
+                this.updateButtons();
+            }
+    
+            prev() {
+                if (this.currentIndex === 0) {
+                    this.currentIndex = this.items.length - 1;
+                } else {
+                    this.currentIndex--;
+                }
+                this.updateTrack();
+                this.updateButtons();
+                this.resetAutoPlay();
+            }
+    
+            next() {
+                if (this.currentIndex === this.items.length - 1) {
+                    this.currentIndex = 0;
+                } else {
+                    this.currentIndex++;
+                }
+                this.updateTrack();
+                this.updateButtons();
+                this.resetAutoPlay();
+            }
+    
+            updateTrack() {
+                this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+            }
+    
+            updateButtons() {
+                this.prevBtn.style.visibility = this.currentIndex === 0 ? 'hidden' : 'visible';
+                this.nextBtn.style.visibility = this.currentIndex === this.items.length - 1 ? 'hidden' : 'visible';
+            }
+    
+            startAutoPlay(delay = 5000) {
+                this.autoPlayInterval = setInterval(() => this.next(), delay);
+            }
+    
+            resetAutoPlay() {
+                clearInterval(this.autoPlayInterval);
+                this.startAutoPlay();
+            }
+        }
+    
+        // 初始化轮播实例
+        const brandCarousel = new Carousel('brand');
+        const weddingCarousel = new Carousel('wedding');
+        const cultureCarousel = new Carousel('culture');
+    
+        // 图片灯箱
+        const lightbox = document.getElementById('lightbox');
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('click', () => {
+                if (img.classList.contains('carousel-image')) return;
+                lightbox.style.display = 'flex';
+                lightbox.querySelector('img').src = img.src;
+            });
+        });
+        lightbox.addEventListener('click', () => lightbox.style.display = 'none');
+    
+        // 懒加载
+        const lazyLoad = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    if (target.dataset.src) {
+                        target.src = target.dataset.src;
+                    }
+                    if (target.tagName === 'VIDEO') {
+                        target.querySelector('source').src = target.querySelector('source').dataset.src;
+                        target.load();
+                    }
+                    lazyLoad.unobserve(target);
+                }
+            });
+        }, { threshold: 0.1 });
+    
+        document.querySelectorAll('.lazy').forEach(el => lazyLoad.observe(el));
+    
+        // 视频自动播放
+        const videos = document.querySelectorAll('video');
+        window.addEventListener('scroll', () => {
+            videos.forEach(video => {
+                const rect = video.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
